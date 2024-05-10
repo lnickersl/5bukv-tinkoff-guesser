@@ -42,8 +42,6 @@ export class WordSolver {
         
             return true;
         });
-        
-        console.log('GET ANSWERS', answers.length);
 
         return answers;
     }
@@ -64,15 +62,11 @@ export class WordSolver {
         
             return true;
         });
-        
-        console.log('GET HELPERS', helpers.length);
 
         return helpers;
     }
 
     private setLetters(words: TWord[]) {
-        console.log('SET LETTERS', words)
-
         this.wrongLetters = new Set();
         this.presentLetters = new Map();
         this.placedLetters = new Map();
@@ -96,10 +90,6 @@ export class WordSolver {
                 };
             });
         });
-
-        console.log('WRONG', this.wrongLetters);
-        console.log('PRESENT', this.presentLetters);
-        console.log('PLACED', this.placedLetters);
     }
 
     private evaluateWords(filterFunction: (word: string) => boolean) {

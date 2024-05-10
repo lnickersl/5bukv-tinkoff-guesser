@@ -43,8 +43,6 @@ function App() {
 
             const text = await fetch('/russian-5-letter-nouns.txt').then((res) => res.text());
 
-            console.log('DICTIONARY')
-
             solver.setDictionary(text.split('\r\n'));
 
             setIsLoading(false);
@@ -98,8 +96,6 @@ function App() {
     const switchActive = useCallback((callback: (value: TCoords | null) => TCoords | null) => {
         setActive((oldActive) => {
             const newActive = callback(oldActive);
-
-            console.log(newActive)
 
             return newActive;
         });
