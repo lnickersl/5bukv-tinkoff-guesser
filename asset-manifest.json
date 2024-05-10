@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/5bukv-tinkoff-guesser/static/css/main.fc7b058d.css",
+    "main.js": "/5bukv-tinkoff-guesser/static/js/main.27fa3839.js",
+    "index.html": "/5bukv-tinkoff-guesser/index.html",
+    "main.fc7b058d.css.map": "/5bukv-tinkoff-guesser/static/css/main.fc7b058d.css.map",
+    "main.27fa3839.js.map": "/5bukv-tinkoff-guesser/static/js/main.27fa3839.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fc7b058d.css",
+    "static/js/main.27fa3839.js"
+  ]
+}
