@@ -41,7 +41,7 @@ function App() {
 
         const loadDictionary = async () => {
 
-            const text = await fetch('/russian-5-letter-nouns.txt').then((res) => res.text());
+            const text = await fetch('./russian-5-letter-nouns.txt').then((res) => res.text());
 
             solver.setDictionary(text.split('\r\n'));
 
