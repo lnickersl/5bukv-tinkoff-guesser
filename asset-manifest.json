@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/5bukv-tinkoff-guesser/static/css/main.fc7b058d.css",
-    "main.js": "/5bukv-tinkoff-guesser/static/js/main.601d8c8b.js",
+    "main.css": "/5bukv-tinkoff-guesser/static/css/main.524e7c79.css",
+    "main.js": "/5bukv-tinkoff-guesser/static/js/main.2d07c99c.js",
     "index.html": "/5bukv-tinkoff-guesser/index.html",
-    "main.fc7b058d.css.map": "/5bukv-tinkoff-guesser/static/css/main.fc7b058d.css.map",
-    "main.601d8c8b.js.map": "/5bukv-tinkoff-guesser/static/js/main.601d8c8b.js.map"
+    "main.524e7c79.css.map": "/5bukv-tinkoff-guesser/static/css/main.524e7c79.css.map",
+    "main.2d07c99c.js.map": "/5bukv-tinkoff-guesser/static/js/main.2d07c99c.js.map"
   },
   "entrypoints": [
-    "static/css/main.fc7b058d.css",
-    "static/js/main.601d8c8b.js"
+    "static/css/main.524e7c79.css",
+    "static/js/main.2d07c99c.js"
   ]
 }
