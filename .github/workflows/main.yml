@@ -13,8 +13,13 @@ jobs:
 
     # Download our master branch
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
+      # Setup .npmrc file to publish to npm
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          registry-url: 'https://registry.npmjs.org'
 
-    # Run our deployment command
-    - name: Deploying project to gh-pages
-      run: npm run deploy
+      # Run our deployment command
+      - name: Deploying project to gh-pages
+        run: npm run deploy
