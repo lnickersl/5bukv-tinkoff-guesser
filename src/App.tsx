@@ -219,7 +219,7 @@ function App() {
                         />
                         <Suggestions 
                             title={'Слова для сужения круга ответов:'} 
-                            emptyMsg = {'1'} 
+                            emptyMsg = {''} 
                             loadMore={addHelpersLimit} 
                             selectSuggestion={handleSelectSuggestion} 
                             suggestions={helpers.results} 

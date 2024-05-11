@@ -27,11 +27,11 @@ const Suggestions: FC<Props> = ({
             <div>
                 <div style={{ fontSize: '30px', marginTop: '20px'}}>{ suggestions.length > 0 ? title : emptyMsg}</div>
                 <div style={{ marginTop: '10px', display: 'flex', flexFlow: 'wrap'}}>
-                { suggestions.length > 0 ?
+                { suggestions.length > 0 &&
                     [
                         ...suggestions.map((suggestion, index) => <SuggestedWord key={index} onClick={stopPropagation(selectSuggestion(suggestion.toUpperCase()))} word={suggestion} />),
                         overflows && <SuggestedWord onClick={stopPropagation(loadMore)} word={'Еще...'} />
-                    ] : [<span style={{ marginLeft: '5px' }}>1</span>]
+                    ]
                 }
                 </div>
             </div>
