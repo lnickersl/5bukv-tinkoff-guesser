@@ -10,10 +10,16 @@ export class WordSolver {
 
     public dictionary: string[] = [];
 
-    public setDictionary(dictionary: string[]) {
+    public async loadDictionary() {
         if (this.dictionary.length !== 0) return;
 
-        this.dictionary = dictionary;
+        const text = await this.fetchDictionary();
+
+        this.dictionary = text.split('\r\n');
+    }
+
+    private fetchDictionary() {
+        return fetch(process.env.PUBLIC_URL + '/russian-5-letter-nouns.txt').then((res) => res.text());
     }
 
     public setInputWords(words: TWord[]) {

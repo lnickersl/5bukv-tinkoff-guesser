@@ -51,10 +51,11 @@ const LetterInput: FC<Props> = ({
 
         event.currentTarget.value = inputLetter;
 
+        moveActive([0, 1]);
+        
         if (letter.value === inputLetter) return;
 
         onInput({ value: inputLetter, state: ELetterState.WRONG });
-        moveActive([0, 1]);
     }, [onInput, moveActive, letter]);
 
     const handleContextMenu = useCallback((event: React.MouseEvent) => {

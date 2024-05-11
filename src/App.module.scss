@@ -1,14 +1,62 @@
 .app {
-  background-color: #1c1c1e;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: white;
+    background-color: #1c1c1e;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    align-items: center;
+}
+
+.game {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    margin-top: 25px; 
+    margin-bottom: 25px;
+    font-size: 25px;
+
+    @media screen and (min-width: 400px) {
+        margin-top: 38px; 
+        margin-bottom: 38px;
+        font-size: 38px;
+    }
+
+    @media screen and (min-width: 800px) {
+        margin-top: 50px; 
+        margin-bottom: 50px;
+        font-size: 50px;
+    }
 }
 
 .field {
-    width: 450px;
+    max-width: 450px;
+    display: flex; 
+    flex-flow: column;
+    gap: 12px;
+    flex-wrap: nowrap;
+
+    width: 100%;
+    flex: 1;
+}
+
+.word {
+    display: flex;
+    flex-flow: row; 
+    gap: 12px; 
+    flex-wrap: nowrap;
+    flex: 1;
+}
+
+.letterBoxLabel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    aspect-ratio: 9 / 10;
 }
 
 .letterInput {
@@ -17,14 +65,6 @@
     position: absolute;
     opacity: 0;
     pointer-events: none;
-}
-
-.letterBoxLabel {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex: 1;
-    aspect-ratio: 10 / 9;
 }
 
 .letterBox {
@@ -38,12 +78,21 @@
 
     user-select: none;
     cursor: pointer;
-    font-size: 4em;
     color: #f1f1f2;
     background: #5f5f5f;
-
+    
     outline: 0 solid #ffdd2d;
     outline-offset: -2px;
+
+    font-size: 2em;
+
+    @media screen and (min-width: 280px) {
+        font-size: 3em;
+    }
+
+    @media screen and (min-width: 450px) {
+        font-size: 4em;
+    }
 
     &:hover {
         filter: brightness(0.85);
@@ -73,6 +122,17 @@
         outline: 0 solid #2196f3;
         outline-width: 4px;
     }
+}
+
+.solution {
+    align-self: start; 
+    margin-top: 10px; 
+    // width: 90%;
+    // margin-left: 5%; 
+    // margin-right: 5%; 
+    display: flex;
+    flex-flow: column;
+    flex: 1;
 }
 
 .solutionWord {

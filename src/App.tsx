@@ -40,10 +40,7 @@ function App() {
         if (solver.dictionary.length !== 0) return;
 
         const loadDictionary = async () => {
-
-            const text = await fetch('./russian-5-letter-nouns.txt').then((res) => res.text());
-
-            solver.setDictionary(text.split('\r\n'));
+            await solver.loadDictionary();
 
             setIsLoading(false);
         };
@@ -203,34 +200,34 @@ function App() {
 
     return (
         <div className={style.app} onKeyDown={handleKeyDown} onClick={handleClick}>
-            <header style={{ marginTop: '50px', marginBottom: '50px'}}>
-                <div style={{ fontSize: '4em' }}>Помощник "5 букв"</div>
-            </header>
-            <div className={style.field}>
-                <div style={{display: 'flex', flexFlow: 'column', gap: 12, flexWrap: "nowrap"}}>
+            <div className={style.game}>
+                <header className={style.title}>
+                    <div>Помощник "5 букв"</div>
+                </header>
+                <div className={style.field}>
                     {words.map((word, wordIndex) => <Word key={wordIndex} onInput={onInput(wordIndex)} setActive={makeActive(wordIndex)} moveActive={moveActive} isActive={isActive(wordIndex)} word={word} />)}
                 </div>
+                { isLoading ? (<div>{'Загрузка...'}</div>) : (
+                    <div className={style.solution}>
+                        <Suggestions 
+                            title={`Возможные ответы (${answers.total}):`} 
+                            emptyMsg = {'Варианты слов не найдены'}  
+                            loadMore={addAnswersLimit} 
+                            selectSuggestion={handleSelectSuggestion} 
+                            suggestions={answers.results} 
+                            overflows={answers.total > answersLimit}
+                        />
+                        <Suggestions 
+                            title={'Слова для сужения круга ответов:'} 
+                            emptyMsg = {'1'} 
+                            loadMore={addHelpersLimit} 
+                            selectSuggestion={handleSelectSuggestion} 
+                            suggestions={helpers.results} 
+                            overflows={helpers.total > helpersLimit}
+                        />
+                    </div>
+                )}
             </div>
-            { isLoading ? (<div>{'Загрузка...'}</div>) : (
-                <div style={{ alignSelf: 'start', marginLeft: '5%', marginRight: '5%', marginTop: '10px'}}>
-                    <Suggestions 
-                        title={`Возможные ответы (${answers.total}):`} 
-                        emptyMsg = {'Варианты слов не найдены'}  
-                        loadMore={addAnswersLimit} 
-                        selectSuggestion={handleSelectSuggestion} 
-                        suggestions={answers.results} 
-                        overflows={answers.total > answersLimit}
-                    />
-                    <Suggestions 
-                        title={'Слова для сужения круга ответов:'} 
-                        emptyMsg = {''} 
-                        loadMore={addHelpersLimit} 
-                        selectSuggestion={handleSelectSuggestion} 
-                        suggestions={helpers.results} 
-                        overflows={helpers.total > helpersLimit}
-                    />
-                </div>
-            )}
         </div>
     );
 }
