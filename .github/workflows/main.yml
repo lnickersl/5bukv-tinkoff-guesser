@@ -19,6 +19,9 @@ jobs:
         with:
           node-version: '20.x'
           registry-url: 'https://registry.npmjs.org'
+          
+      - name: Install dependencies
+        run: npm install --dev
 
       # Run our deployment command
       - name: Deploying project to gh-pages
