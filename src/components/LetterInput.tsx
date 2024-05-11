@@ -52,7 +52,7 @@ const LetterInput: FC<Props> = ({
         event.currentTarget.value = inputLetter;
 
         moveActive([0, 1]);
-        
+
         if (letter.value === inputLetter) return;
 
         onInput({ value: inputLetter, state: ELetterState.WRONG });
@@ -78,10 +78,12 @@ const LetterInput: FC<Props> = ({
     }, [onInput, moveActive]);
 
     const handleClick = useCallback((event: React.MouseEvent) => {
+        if (isActive) return handleContextMenu(event);
+
         event.stopPropagation();
 
         setActive();
-    }, [setActive]);
+    }, [setActive, isActive, handleContextMenu]);
 
     useEffect(() => {
         if (isActive) {
