@@ -35,7 +35,7 @@ export class WordGraph {
 
         letters.forEach((primary) => {
             if (knownLetters.has(primary)) return;
-             
+
             let primaryLetter = this.getLetter(primary);
 
             total += primaryLetter[0].total(exclude);
