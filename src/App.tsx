@@ -4,6 +4,7 @@ import Word from './components/Word';
 import {ELetterState, TCoords, TLetter, TWord} from './types';
 import {WordSolver} from './helpers/WordSolver';
 import Suggestions from './components/Suggestions';
+import SuggestedWord from './components/SuggestedWord';
 
 const LETTERS = 5;
 const WORDS = 6;
@@ -198,6 +199,10 @@ function App() {
         return wordIndex === active?.[0] && letterIndex === active?.[1];
     };
 
+    const handleClear = useCallback(() => {
+        setWords(initWords());
+    }, [setWords]);
+
     return (
         <div className={style.app} onKeyDown={handleKeyDown} onClick={handleClick}>
             <div className={style.game}>
@@ -206,6 +211,9 @@ function App() {
                 </header>
                 <div className={style.field}>
                     {words.map((word, wordIndex) => <Word key={wordIndex} onInput={onInput(wordIndex)} setActive={makeActive(wordIndex)} moveActive={moveActive} isActive={isActive(wordIndex)} word={word} />)}
+                </div>
+                <div style={{marginTop: '15px'}}>
+                    <SuggestedWord word={'CLEAR'} onClick={handleClear} />
                 </div>
                 { isLoading ? (<div>{'Загрузка...'}</div>) : (
                     <div className={style.solution}>
