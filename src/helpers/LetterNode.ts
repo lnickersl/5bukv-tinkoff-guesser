@@ -8,11 +8,9 @@ export class LetterNode {
     }
 
     public total(exclude: Set<string>) {
-        let total = 1;
+        let total = 0;
         this.connections.forEach((con) => {
-            if (exclude.has(con[0].value)) return;
-
-            total += con[1];
+            total += exclude.has(con[0].value) ? 0.01 : con[1];
         });
         return total;
     }
