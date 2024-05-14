@@ -30,7 +30,7 @@ const Suggestions: FC<Props> = ({
                 { suggestions.length > 0 &&
                     [
                         ...suggestions.map((suggestion, index) => <SuggestedWord key={index} onClick={stopPropagation(selectSuggestion(suggestion.toUpperCase()))} word={suggestion} />),
-                        overflows && <SuggestedWord onClick={stopPropagation(loadMore)} word={'Еще...'} />
+                        overflows && <SuggestedWord key={suggestions.length} onClick={stopPropagation(loadMore)} word={'Еще...'} />
                     ]
                 }
                 </div>

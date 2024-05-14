@@ -49,10 +49,10 @@ function App() {
 
     useEffect(() => {
         solver.setInputWords(words);
-    }, [words]);
+    }, [words, isLoading]);
 
     useEffect(() => {
-        const answers = solver.getAnswers();
+        const answers = solver.answers;
 
         setAnswers({ 
             total: answers.length, 
@@ -62,7 +62,7 @@ function App() {
     }, [words, isLoading, answersLimit]);
 
     useEffect(() => {
-        const helpers = solver.getHelpers();
+        const helpers = solver.helpers;
 
         setHelpers({ 
             total: helpers.length, 
