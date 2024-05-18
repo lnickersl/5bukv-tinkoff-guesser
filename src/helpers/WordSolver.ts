@@ -1,19 +1,18 @@
 import {ELetterState, TWord} from '../types';
 import {CurrentWord} from './CurrentWord';
-import {WordGraph} from './WordGraph';
+import {WordBitFLags as WordBitFlags} from './WordBitFlags';
 
 export class WordSolver {
     private wrongLetters: Set<string> = new Set();
     private presentLetters: Map<string, number[]> = new Map();
     private placedLetters: Map<string, number[]> = new Map();
 
-    private letterRanks: Record<string, number> = {};
     private topRank = 0;
 
     public answers: string[] = [];
     public helpers: string[] = [];
 
-    public wordGraph = new WordGraph();
+    public wordGraph = new WordBitFlags();
     public wordRanks: Record<string, number> = {};
 
     public dictionary: string[] = [];
@@ -97,35 +96,6 @@ export class WordSolver {
         });
     }
 
-    private isKnownLetter(letter: string) {
-        return this.wrongLetters.has(letter) || this.presentLetters.has(letter) || this.placedLetters.has(letter);
-    }
-
-    private knownLetters() {
-        return new Set([...this.wrongLetters, ...this.presentLetters.keys(), ...this.placedLetters.keys()]);
-    }
-
-    private getWordValue(word: string) {
-            let set = new Set(word.split(''));
-            let value = 0;
-            set.forEach(l => {
-                value += this.letterRanks[l] || -1;
-            })
-            return value
-    }
-
-    private countTopLetters(words: string[]) {
-        this.letterRanks = {}
-
-        words.forEach(word => {
-            let unique = new Set(word);
-
-            unique.forEach((letter) => {
-                this.letterRanks[letter] = (this.letterRanks[letter] || 0) + 1;
-            });
-        });
-    }
-
     private addLetterToMap(value: string, position: number, map: Map<string, number[]>) {
         let positions = map.get(value);
 
@@ -142,13 +112,14 @@ export class WordSolver {
     }
 
     private createRanks(words: string[]) {
+        const knownLetters = new Set([...this.wrongLetters, ...this.presentLetters.keys(), ...this.placedLetters.keys()]);
         this.wordGraph.create(words);
 
         this.topRank = 0;
         this.wordRanks = {};
 
         this.dictionary.forEach((word) => {
-            const rank = this.wordGraph.wordValue(word, this.knownLetters());
+            const rank = this.wordGraph.wordValue(word, knownLetters);
 
             this.wordRanks[word] = rank;
 
